@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Photos
-    <a href="/likes/new" class="btn btn-lg btn-success">New Like</a>
+    <a href="/photos/new" class="btn btn-lg btn-success">New Photo</a>
   </h1>
 </div>
 
@@ -14,15 +14,11 @@
         <th>Actions</th>
       </tr>
 
-      <% @likes.each do |like| %>
+      <% @photos.each do |photo| %>
       <tr>
-        <td><%= like.user_id %></td>
-        <td><%= like.photo_id %></td>
-        <td>
-          <a href="/likes/<%= like.id %>" class="btn btn-primary">Show</a>
-          <a href="/likes/<%= like.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_like/<%= like.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
+        <td><%= photo.user_id %></td>
+        <td><%= photo.caption %></td>
+
       </tr>
       <% end %>
     </table>

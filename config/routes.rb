@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "photo#index"
+  root "photos#index"
+
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "profile"
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"

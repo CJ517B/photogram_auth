@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-mol-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h3><%= @user.username %></h3>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-mol-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="/users/<%= @user.id %>"><%= @user.username %></a>
+            <small>
+              6 months ago
+            </small>
+          </h3>
+        </div>
+        <% @user.photos.each do |photo| %>
+        <div class="panel-body">          
+          <a href="/photos/<%= photo.id %>">
+            <img src="<%= photo.image %>" class="img-responsive">
+          </a>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <% if current_user.id=@user.id %>
+  <div class="col-mol-8 col-md-offset-2">
+    <a href="/photos/new" class="btn btn-default btn-block">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+  <hr>
+  <% end %>
+</div>
