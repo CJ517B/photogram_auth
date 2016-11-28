@@ -1,0 +1,49 @@
+
+
+<div class="container">
+  <% @me.liked_photos.each do |liked_photo| %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="/users/<%= liked_photo.user_id %>"><%= @users.find(liked_photo.user_id).username %></a>
+            <small>
+                <%= time_ago_in_words(liked_photo.updated_at)%></small>
+            </small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <a href="/photos/<%= liked_photo.id %>">
+            <img src="<%= liked_photo.image %>" class="img-responsive">
+          </a>
+          <p><%= liked_photo.caption %></p>
+          <ul class="media-list">
+            <li class="media">
+              <p>
+                <a href="/delete_like/<%= liked_photo.id %>" class="btn btn-link">
+                  <i class="fa fa-heart"></i>
+                </a>
+                <%= liked_photo.fans.pluck(:username).to_sentence%>
+
+              </p>
+              <div class="media-body media-left">
+                <% liked_photo.comments.each do |comment| %>
+                <h6>
+                  <a href="users/<%= comment.user_id %>"><%= comment.user.username %></a>
+                <small>
+                  <%= time_ago_in_words(comment.updated_at)%></small>
+                </h6>
+                <h6>
+                  <%= comment.body %>
+                </h6>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

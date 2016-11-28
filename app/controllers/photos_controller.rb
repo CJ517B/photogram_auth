@@ -41,18 +41,19 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-
     @photo.caption = params[:caption]
     @photo.image = params[:image]
     @photo.user_id = params[:user_id]
 
     save_status = @photo.save
 
+
     if save_status == true
       redirect_to("/photos/#{@photo.id}", :notice => "Photo updated successfully.")
     else
       render("photos/edit.html.erb")
     end
+
   end
 
   def destroy
