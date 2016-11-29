@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "photos#index"
 
   get "/users", :controller => "users", :action => "index"
+  
   get "/users/:id", :controller => "users", :action => "profile"
   get "/my_likes", :controller => "users", :action => "my_likes"
   # Routes for the Comment resource:
